@@ -1,19 +1,21 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "react-query";
 import { ThemeProvider } from "styled-components";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { GlobalStyle, theme } from "./styles/Global";
+
+const client = new QueryClient();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <BrowserRouter>
+      <QueryClientProvider client={client}>
         <App />
-      </BrowserRouter>
+      </QueryClientProvider>
     </ThemeProvider>
   </React.StrictMode>
 );
