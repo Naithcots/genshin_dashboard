@@ -1,12 +1,15 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import useCharacterIcon from "../hooks/useCharacterIcon";
 
 const CharacterCard = ({ data }) => {
-  const name = data.name.toLowerCase();
+  const name = data.name.replace(" ", "-").toLowerCase();
+  const { src } = useCharacterIcon(name);
 
   return (
     <StyledLink to={`/character/${name}`}>
       <StyledCharacterCard>
+        <Icon src={src} alt="character icon" />
         <Name>{data.name}</Name>
       </StyledCharacterCard>
     </StyledLink>
@@ -15,6 +18,7 @@ const CharacterCard = ({ data }) => {
 export default CharacterCard;
 
 const StyledLink = styled(Link)`
+  color: inherit;
   text-decoration: none;
 `;
 
@@ -30,6 +34,11 @@ const StyledCharacterCard = styled.div`
   &:hover {
     opacity: 0.8;
   }
+`;
+
+const Icon = styled.img`
+  width: auto;
+  max-height: 8em;
 `;
 
 const Name = styled.h3`
