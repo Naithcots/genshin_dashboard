@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Home from "./Home";
 import Characters from "./Characters";
 import Page404 from "./Page404";
+import Background from "./components/Background";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/character/:name" element={<Page404 />} />
           <Route path="*" element={<Page404 />} />
         </Routes>
+        <Background />
       </BrowserRouter>
     </div>
   );
